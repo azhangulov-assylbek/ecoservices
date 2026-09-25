@@ -58,8 +58,10 @@ cp .env.example .env
 python3 -c "import secrets; print(secrets.token_urlsafe(50))"   # скопируйте ключ
 nano .env
 ```
-В `.env` заполните `DJANGO_SECRET_KEY`, пароль базы в `POSTGRES_PASSWORD` и тот же пароль
-в `DATABASE_URL`. Сохранить в nano: `Ctrl+O`, `Enter`, выйти: `Ctrl+X`.
+В `.env` заполните `DJANGO_SECRET_KEY` и пароль базы в `POSTGRES_PASSWORD`.
+Подключение к PostgreSQL Django соберёт сам из `POSTGRES_DB`, `POSTGRES_USER` и `POSTGRES_PASSWORD`,
+хост — сервис `db` из docker compose; отдельная строка `DATABASE_URL` не нужна.
+Сохранить в nano: `Ctrl+O`, `Enter`, выйти: `Ctrl+X`.
 
 ## 6. Запуск
 ```bash

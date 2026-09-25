@@ -60,13 +60,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# PostgreSQL в Docker/продакшене; SQLite для быстрого локального запуска без Docker.
-DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
-        conn_max_age=600,
-    )
-}
+# База данных: сначала DATABASE_URL, затем PostgreSQL из POSTGRES_*,
+# иначе SQLite для быстрого локального запуска без Docker.
+_CONN_MAX_AGE = 600
+
+
+def build_database_config(env=None):
+    """Подключение к базе: DATABASE_URL -> POSTGRES_* -> SQLite."""
+    env = os.environ if env is None else env
+    url = env.get("DATABASE_URL", "").strip()
+    if url:
+        return dj_database_url.parse(url, conn_max_age=_CONN_MAX_AGE)
+    name = env.get("POSTGRES_DB", "").strip()
+    user = env.get("POSTGRES_USER", "").strip()
+    if name and user:
+        return {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": name,
+            "USER": user,
+            "PASSWORD": env.get("POSTGRES_PASSWORD", ""),
+            # В docker compose база доступна по имени сервиса db.
+            "HOST": env.get("POSTGRES_HOST", "db"),
+            "PORT": env.get("POSTGRES_PORT", "5432"),
+            "CONN_MAX_AGE": _CONN_MAX_AGE,
+        }
+    return {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": str(BASE_DIR / "db.sqlite3"),
+    }
+
+
+DATABASES = {"default": build_database_config()}
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
