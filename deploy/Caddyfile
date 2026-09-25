@@ -1,0 +1,4 @@
+ecoservices.kz, www.ecoservices.kz {
+	encode gzip
+	reverse_proxy web:8000
+}

@@ -1,0 +1,33 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% block title %}ecoservices.kz — цифровые сервисы для устойчивого развития предприятий{% endblock %}</title>
+<meta name="description" content="{% block description %}Соответствие НДТ, ESG-отчётность по стандарту P5 и оборудование для мониторинга выбросов, воды, пыли и шума. Проект ЭКОМЕКЕН, Казахстан.{% endblock %}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<div class="band" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<header>
+  <div class="wrap bar">
+    <div class="brand"><a class="logo" href="{% url 'core:home' %}">ecoservices<span>.kz</span></a>
+      <a class="by" href="{{ site.company_url }}">проект ЭКОМЕКЕН</a></div>
+    <nav aria-label="Основная навигация">
+      <a href="{% url 'core:home' %}#services">Сервисы</a>
+      <a href="{% url 'core:home' %}#sdg">Устойчивое развитие</a>
+      <a href="{% url 'core:home' %}#equipment">Оборудование</a>
+      <a href="{% url 'core:home' %}#flow">Как это работает</a>
+      <a class="btn" href="{% url 'admin:login' %}">Войти</a>
+    </nav>
+  </div>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer><div class="wrap"><span>© {% now "Y" %} {{ site.company }}. ecoservices.kz, Астана</span><span>Есть идея сервиса? <a href="mailto:{{ site.email }}">Напишите нам</a></span></div></footer>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

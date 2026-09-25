@@ -1,0 +1,20 @@
+# Локальная разработка: docker compose up --build  ->  http://localhost:8000
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ecoservices
+      POSTGRES_USER: ecoservices
+      POSTGRES_PASSWORD: ecoservices
+    volumes: [pgdata:/var/lib/postgresql/data]
+  web:
+    build: .
+    command: sh -c "python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      DJANGO_DEBUG: "1"
+      DATABASE_URL: postgres://ecoservices:ecoservices@db:5432/ecoservices
+    ports: ["8000:8000"]
+    volumes: [".:/app"]
+    depends_on: [db]
+volumes:
+  pgdata:

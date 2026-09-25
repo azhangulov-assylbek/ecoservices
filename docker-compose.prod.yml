@@ -1,0 +1,30 @@
+# Продакшен на VPS: docker compose -f docker-compose.prod.yml up -d --build
+# Caddy сам получает и продлевает HTTPS-сертификат Let's Encrypt для домена.
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes: [pgdata:/var/lib/postgresql/data]
+  web:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    depends_on: [db]
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [web]
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:
