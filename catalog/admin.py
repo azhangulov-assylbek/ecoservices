@@ -14,6 +14,7 @@ class ServiceInline(admin.TabularInline):
 class ServiceGroupAdmin(admin.ModelAdmin):
     list_display = ("name", "order")
     list_editable = ("order",)
+    fields = ("name", "name_kk", "name_en", "order")
     inlines = [ServiceInline]
 
 
@@ -24,6 +25,12 @@ class ServiceAdmin(admin.ModelAdmin):
     list_editable = ("status", "featured", "order")
     search_fields = ("name", "description")
     prepopulated_fields = {"slug": ("name",)}
+    fieldsets = (
+        (None, {"fields": ("group", "slug", "status", "theme", "tasks", "featured", "order")}),
+        ("Русский", {"fields": ("name", "description")}),
+        ("Қазақша", {"fields": ("name_kk", "description_kk")}),
+        ("English", {"fields": ("name_en", "description_en")}),
+    )
 
     @admin.display(description="Подписок на запуск")
     def notify_count(self, obj):
@@ -40,6 +47,12 @@ class NotifyRequestAdmin(admin.ModelAdmin):
 class EquipmentAdmin(admin.ModelAdmin):
     list_display = ("name", "theme", "order")
     list_editable = ("order",)
+    fieldsets = (
+        (None, {"fields": ("theme", "order")}),
+        ("Русский", {"fields": ("name", "description", "parameters")}),
+        ("Қазақша", {"fields": ("name_kk", "description_kk", "parameters_kk")}),
+        ("English", {"fields": ("name_en", "description_en", "parameters_en")}),
+    )
 
 
 @admin.register(QuoteRequest)

@@ -1,63 +1,63 @@
 {% extends "base.html" %}
-{% load static %}
+{% load i18n static %}
 {% block content %}
   <section class="wrap hero">
     <div>
-      <h1>Цифровые сервисы для устойчивого развития предприятий</h1>
-      <p class="lead">Соответствие НДТ, ESG-отчётность и непрерывный мониторинг выбросов, воды, пыли и шума. Для экологов предприятий и консультантов в Казахстане.</p>
+      <h1>{% translate "Цифровые сервисы для устойчивого развития предприятий" %}</h1>
+      <p class="lead">{% translate "Соответствие НДТ, ESG-отчётность и непрерывный мониторинг выбросов, воды, пыли и шума. Для экологов предприятий и консультантов в Казахстане." %}</p>
       <div class="cta">
-        <a class="btn solid" href="#services">Выбрать сервис</a>
-        <a class="btn" href="#equipment">Подобрать оборудование</a>
+        <a class="btn solid" href="#services">{% translate "Выбрать сервис" %}</a>
+        <a class="btn" href="#equipment">{% translate "Подобрать оборудование" %}</a>
       </div>
     </div>
     <div>
-      <div class="console" aria-label="Демонстрация панели мониторинга объекта">
-        <div class="c-top"><span class="c-obj">Котельная № 2, промплощадка</span><span><span class="num" id="clock">--:--:--</span><span class="live"><i></i>онлайн</span></span></div>
+      <div class="console" aria-label="{% translate 'Демонстрация панели мониторинга объекта' %}">
+        <div class="c-top"><span class="c-obj">{% translate "Котельная № 2, промплощадка" %}</span><span><span class="num" id="clock">--:--:--</span><span class="live"><i></i>{% translate "онлайн" %}</span></span></div>
         <div class="tiles" id="tiles"></div>
         <div class="c-bottom">
-          <div class="log"><h3>Журнал событий</h3><ul id="log"></ul></div>
-          <div class="ai" aria-live="polite"><h3>ИИ-анализ ecoservices</h3><div id="ai"><p class="idle">Отслеживаем показатели. При превышении здесь появится разбор со ссылкой на справочник НДТ.</p></div></div>
+          <div class="log"><h3>{% translate "Журнал событий" %}</h3><ul id="log"></ul></div>
+          <div class="ai" aria-live="polite"><h3>{% translate "ИИ-анализ ecoservices" %}</h3><div id="ai"><p class="idle">{% translate "Отслеживаем показатели. При превышении здесь появится разбор со ссылкой на справочник НДТ." %}</p></div></div>
         </div>
       </div>
-      <p class="demo-note">Демонстрация на условных данных. Нормативные значения показаны для примера.</p>
+      <p class="demo-note">{% translate "Демонстрация на условных данных. Нормативные значения показаны для примера." %}</p>
     </div>
   </section>
 
   <section class="block alt" id="services" aria-labelledby="srv-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="srv-h">Цифровые сервисы</h2>
-        <p>Выберите задачу, и мы подсветим подходящие сервисы. Два уже работают в бета-версии.</p>
+        <h2 id="srv-h">{% translate "Цифровые сервисы" %}</h2>
+        <p>{% translate "Выберите задачу, и мы подсветим подходящие сервисы. Два уже работают в бета-версии." %}</p>
       </div>
       <div class="chips" id="chips">
-        <button class="chip" aria-pressed="true" data-task="all">Все сервисы</button>
-        <button class="chip" aria-pressed="false" data-task="ker">Получить или пересмотреть КЭР</button>
-        <button class="chip" aria-pressed="false" data-task="esg">Подготовить ESG-отчёт</button>
-        <button class="chip" aria-pressed="false" data-task="monitor">Организовать мониторинг</button>
-        <button class="chip" aria-pressed="false" data-task="tech">Внедрить новую технологию</button>
-        <button class="chip" aria-pressed="false" data-task="waste">Разобраться с отходами</button>
-        <button class="chip" aria-pressed="false" data-task="emis">Посчитать выбросы и платежи</button>
-        <button class="chip" aria-pressed="false" data-task="report">Сдать отчётность вовремя</button>
+        <button class="chip" aria-pressed="true" data-task="all">{% translate "Все сервисы" %}</button>
+        <button class="chip" aria-pressed="false" data-task="ker">{% translate "Получить или пересмотреть КЭР" %}</button>
+        <button class="chip" aria-pressed="false" data-task="esg">{% translate "Подготовить ESG-отчёт" %}</button>
+        <button class="chip" aria-pressed="false" data-task="monitor">{% translate "Организовать мониторинг" %}</button>
+        <button class="chip" aria-pressed="false" data-task="tech">{% translate "Внедрить новую технологию" %}</button>
+        <button class="chip" aria-pressed="false" data-task="waste">{% translate "Разобраться с отходами" %}</button>
+        <button class="chip" aria-pressed="false" data-task="emis">{% translate "Посчитать выбросы и платежи" %}</button>
+        <button class="chip" aria-pressed="false" data-task="report">{% translate "Сдать отчётность вовремя" %}</button>
       </div>
 
       <div class="featured">
         {% for s in featured %}
         <article class="feat" style="--fc:var(--c-{{ s.theme }})">
-          <span class="tag {{ s.status }}">{% if s.status == 'beta' %}Бета, можно пробовать{% else %}{{ s.get_status_display }}{% endif %}</span>
-          <h3>{{ s.name }}</h3>
-          <p>{{ s.description }}</p>
-          <div class="actions">{% if s.service_url %}<a class="btn solid" href="{{ s.service_url }}">Открыть сервис</a>{% else %}<button class="btn" data-notify aria-pressed="false">Сообщить о запуске</button>{% endif %}</div>
+          <span class="tag {{ s.status }}">{% if s.status == 'beta' %}{% translate "Бета, можно пробовать" %}{% else %}{{ s.get_status_display }}{% endif %}</span>
+          <h3>{{ s.display_name }}</h3>
+          <p>{{ s.display_description }}</p>
+          <div class="actions">{% if s.service_url %}<a class="btn solid" href="{{ s.service_url }}">{% translate "Открыть сервис" %}</a>{% else %}<button class="btn" data-notify aria-pressed="false">{% translate "Сообщить о запуске" %}</button>{% endif %}</div>
         </article>
         {% endfor %}
       </div>
 
       {% for group in groups %}
-      <div class="group"><h3>{{ group.name }}</h3>
+      <div class="group"><h3>{{ group.display_name }}</h3>
         {% for s in group.services.all %}
         <div class="row" data-tasks="{{ s.tasks }}" style="--rc:var(--c-{{ s.theme }})">
-          <span class="mark"></span><span class="name">{{ s.name }}</span><span class="desc">{{ s.description }}</span>
+          <span class="mark"></span><span class="name">{{ s.display_name }}</span><span class="desc">{{ s.display_description }}</span>
           <span class="tag {{ s.status }}">{{ s.get_status_display }}</span>
-          <span class="go">{% if s.service_url %}<a class="link" href="{{ s.service_url }}">Открыть</a>{% else %}<button class="link" data-notify aria-pressed="false">Сообщить о запуске</button>{% endif %}</span>
+          <span class="go">{% if s.service_url %}<a class="link" href="{{ s.service_url }}">{% translate "Открыть" %}</a>{% else %}<button class="link" data-notify aria-pressed="false">{% translate "Сообщить о запуске" %}</button>{% endif %}</span>
         </div>
         {% endfor %}
       </div>
@@ -68,79 +68,82 @@
   <section class="block" id="sdg" aria-labelledby="sdg-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="sdg-h">Вклад в Цели устойчивого развития</h2>
-        <p>Каждый сервис и прибор помогает предприятию двигаться к конкретным целям Повестки-2030 и показывать это в отчётности.</p>
+        <h2 id="sdg-h">{% translate "Вклад в Цели устойчивого развития" %}</h2>
+        <p>{% translate "Каждый сервис и прибор помогает предприятию двигаться к конкретным целям Повестки-2030 и показывать это в отчётности." %}</p>
       </div>
       <div class="themes">
-        <div class="theme" style="--tc:var(--c-climate)"><div class="head"><h3>Климат</h3><div class="sdg">ЦУР 7 и 13</div></div>
-          <ul><li><b>Проверка по НДТ</b> для энергетических установок</li><li><b>Инвентаризация</b> парниковых газов</li><li><b>Мониторинг</b> CO₂ на источниках</li></ul></div>
-        <div class="theme" style="--tc:var(--c-water)"><div class="head"><h3>Вода</h3><div class="sdg">ЦУР 6 и 14</div></div>
-          <ul><li><b>Мониторинг</b> качества воды в водоёмах</li><li><b>Контроль</b> выпусков сточных вод</li></ul></div>
-        <div class="theme" style="--tc:var(--c-industry)"><div class="head"><h3>Производство</h3><div class="sdg">ЦУР 9 и 12</div></div>
-          <ul><li><b>НДТ</b>: подбор и оценка технологий</li><li><b>Отходы</b>: классификация и паспорта</li><li><b>Подготовка к КЭР</b></li></ul></div>
-        <div class="theme" style="--tc:var(--c-health)"><div class="head"><h3>Здоровье и города</h3><div class="sdg">ЦУР 3 и 11</div></div>
-          <ul><li><b>Мониторинг пыли</b> на границе СЗЗ</li><li><b>Мониторинг шума</b> у жилой застройки</li></ul></div>
-        <div class="theme" style="--tc:var(--c-partner)"><div class="head"><h3>Отчётность</h3><div class="sdg">ЦУР 8 и 17</div></div>
-          <ul><li><b>ESG-отчёт по P5</b></li><li><b>Прозрачные данные</b> для инвесторов, банков и партнёров</li></ul></div>
+        <div class="theme" style="--tc:var(--c-climate)"><div class="head"><h3>{% translate "Климат" %}</h3><div class="sdg">{% translate "ЦУР 7 и 13" %}</div></div>
+          <ul><li><b>{% translate "Проверка по НДТ" %}</b> {% translate "для энергетических установок" %}</li><li><b>{% translate "Инвентаризация" %}</b> {% translate "парниковых газов" %}</li><li><b>{% translate "Мониторинг" %}</b> {% translate "CO₂ на источниках" %}</li></ul></div>
+        <div class="theme" style="--tc:var(--c-water)"><div class="head"><h3>{% translate "Вода" %}</h3><div class="sdg">{% translate "ЦУР 6 и 14" %}</div></div>
+          <ul><li><b>{% translate "Мониторинг" %}</b> {% translate "качества воды в водоёмах" %}</li><li><b>{% translate "Контроль" %}</b> {% translate "выпусков сточных вод" %}</li></ul></div>
+        <div class="theme" style="--tc:var(--c-industry)"><div class="head"><h3>{% translate "Производство" %}</h3><div class="sdg">{% translate "ЦУР 9 и 12" %}</div></div>
+          <ul><li><b>{% translate "НДТ" %}</b>: {% translate "подбор и оценка технологий" %}</li><li><b>{% translate "Отходы" %}</b>: {% translate "классификация и паспорта" %}</li><li><b>{% translate "Подготовка к КЭР" %}</b></li></ul></div>
+        <div class="theme" style="--tc:var(--c-health)"><div class="head"><h3>{% translate "Здоровье и города" %}</h3><div class="sdg">{% translate "ЦУР 3 и 11" %}</div></div>
+          <ul><li><b>{% translate "Мониторинг пыли" %}</b> {% translate "на границе СЗЗ" %}</li><li><b>{% translate "Мониторинг шума" %}</b> {% translate "у жилой застройки" %}</li></ul></div>
+        <div class="theme" style="--tc:var(--c-partner)"><div class="head"><h3>{% translate "Отчётность" %}</h3><div class="sdg">{% translate "ЦУР 8 и 17" %}</div></div>
+          <ul><li><b>{% translate "ESG-отчёт по P5" %}</b></li><li><b>{% translate "Прозрачные данные" %}</b> {% translate "для инвесторов, банков и партнёров" %}</li></ul></div>
       </div>
-      <p class="sdg-note">ЦУР — 17 Целей устойчивого развития ООН, принятых в Повестке дня на период до 2030 года. Номера целей указаны для ориентира в отчётности.</p>
+      <p class="sdg-note">{% translate "ЦУР — 17 Целей устойчивого развития ООН, принятых в Повестке дня на период до 2030 года. Номера целей указаны для ориентира в отчётности." %}</p>
     </div>
   </section>
 
   <section class="block alt" id="equipment" aria-labelledby="eq-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="eq-h">Оборудование для мониторинга</h2>
-        <p>Поставляем и подключаем системы непрерывного мониторинга. Показания сразу попадают в ваш кабинет ecoservices.kz.</p>
+        <h2 id="eq-h">{% translate "Оборудование для мониторинга" %}</h2>
+        <p>{% translate "Поставляем и подключаем системы непрерывного мониторинга. Показания сразу попадают в ваш кабинет ecoservices.kz." %}</p>
       </div>
       <div class="eq-list">
         {% for e in equipment %}
-        <article class="eq" style="--ec:var(--c-{{ e.theme }})"><h3>{{ e.name }}</h3><p>{{ e.description }}</p>
-          <p class="params">{{ e.parameters }}</p>
-          <button class="btn" data-quote="{{ e.pk }}" data-quote-name="{{ e.name }}">Запросить предложение</button></article>
+        <article class="eq" style="--ec:var(--c-{{ e.theme }})"><h3>{{ e.display_name }}</h3><p>{{ e.display_description }}</p>
+          <p class="params">{{ e.display_parameters }}</p>
+          <button class="btn" data-quote="{{ e.pk }}" data-quote-name="{{ e.display_name }}">{% translate "Запросить предложение" %}</button></article>
         {% endfor %}
       </div>
       <form class="quote" id="quote" action="{% url 'core:quote' %}" method="post" hidden>
         {% csrf_token %}
         <input type="hidden" name="equipment">
-        <h3 id="quote-title">Запрос предложения</h3>
+        <h3 id="quote-title">{% translate "Запрос предложения" %}</h3>
         <div class="fields">
-          <label>Компания<input name="company" autocomplete="organization" required maxlength="200"></label>
-          <label>Телефон или email<input name="contact" autocomplete="email" required maxlength="200"></label>
-          <label class="wide">Объект и задача<textarea name="task" rows="3" placeholder="Например: котельная 2×50 МВт на угле, нужен мониторинг выбросов для КЭР"></textarea></label>
+          <label>{% translate "Компания" %}<input name="company" autocomplete="organization" required maxlength="200"></label>
+          <label>{% translate "Телефон или email" %}<input name="contact" autocomplete="email" required maxlength="200"></label>
+          <label class="wide">{% translate "Объект и задача" %}<textarea name="task" rows="3" placeholder="{% translate 'Например: котельная 2×50 МВт на угле, нужен мониторинг выбросов для КЭР' %}"></textarea></label>
         </div>
-        <div class="actions"><button class="btn solid" type="submit">Отправить запрос</button><button class="link" type="button" id="quote-close">Отмена</button></div>
-        <p class="sent" id="quote-sent" hidden>Запрос отправлен. Инженер ЭКОМЕКЕН свяжется с вами в течение рабочего дня.</p>
-        <p class="err" id="quote-error" hidden>Не удалось отправить запрос. Проверьте поля или напишите на {{ site.email }}.</p>
+        <div class="actions"><button class="btn solid" type="submit">{% translate "Отправить запрос" %}</button><button class="link" type="button" id="quote-close">{% translate "Отмена" %}</button></div>
+        <p class="sent" id="quote-sent" hidden>{% translate "Запрос отправлен. Инженер ЭКОМЕКЕН свяжется с вами в течение рабочего дня." %}</p>
+        <p class="err" id="quote-error" hidden>{% blocktranslate with email=site.email %}Не удалось отправить запрос. Проверьте поля или напишите на {{ email }}.{% endblocktranslate %}</p>
       </form>
     </div>
   </section>
 
   <section class="block" id="flow" aria-labelledby="flow-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="flow-h">Как это работает</h2></div>
+      <div class="sec-head"><h2 id="flow-h">{% translate "Как это работает" %}</h2></div>
       <ol class="flow">
-        <li><b>Измеряем</b><span>Датчики на трубах, водоёмах и границе СЗЗ передают показания непрерывно.</span></li>
-        <li><b>Сверяем</b><span>Показания сравниваются с оцифрованными технологическими показателями справочников НДТ.</span></li>
-        <li><b>Объясняем</b><span>При превышении ИИ разбирает причину и предлагает техники со ссылкой на справочник.</span></li>
-        <li><b>Отчитываемся</b><span>Данные и выводы собираются в отчёты для КЭР, ПЭК и ESG-отчётности.</span></li>
+        <li><b>{% translate "Измеряем" %}</b><span>{% translate "Датчики на трубах, водоёмах и границе СЗЗ передают показания непрерывно." %}</span></li>
+        <li><b>{% translate "Сверяем" %}</b><span>{% translate "Показания сравниваются с оцифрованными технологическими показателями справочников НДТ." %}</span></li>
+        <li><b>{% translate "Объясняем" %}</b><span>{% translate "При превышении ИИ разбирает причину и предлагает техники со ссылкой на справочник." %}</span></li>
+        <li><b>{% translate "Отчитываемся" %}</b><span>{% translate "Данные и выводы собираются в отчёты для КЭР, ПЭК и ESG-отчётности." %}</span></li>
       </ol>
-      <p class="trust">Все выводы опираются на официальные тексты справочников НДТ, Экологический кодекс РК и международные стандарты отчётности. Результаты носят справочный характер и не заменяют государственную экологическую экспертизу.</p>
+      <p class="trust">{% translate "Все выводы опираются на официальные тексты справочников НДТ, Экологический кодекс РК и международные стандарты отчётности. Результаты носят справочный характер и не заменяют государственную экологическую экспертизу." %}</p>
     </div>
   </section>
 
   <section class="about">
     <div class="wrap about-in">
       <div>
-        <h2>Проект ЭКОМЕКЕН</h2>
-        <p>ecoservices.kz разрабатывает ТОО «ЭКОМЕКЕН», ИТ-компания из Казахстана. Мы соединяем ИТ-экспертизу с практикой в области НДТ, экологического регулирования и устойчивого управления проектами.</p>
+        <h2>{% translate "Проект ЭКОМЕКЕН" %}</h2>
+        <p>{% translate "ecoservices.kz разрабатывает ТОО «ЭКОМЕКЕН», ИТ-компания из Казахстана. Мы соединяем ИТ-экспертизу с практикой в области НДТ, экологического регулирования и устойчивого управления проектами." %}</p>
       </div>
       <div class="about-links">
-        <a class="btn" href="{{ site.company_url }}">О компании ЭКОМЕКЕН</a>
+        <a class="btn" href="{{ site.company_url }}">{% translate "О компании ЭКОМЕКЕН" %}</a>
         <a href="mailto:{{ site.email }}">{{ site.email }}</a>
         <a href="tel:{{ site.phone|cut:' ' }}">{{ site.phone }}</a>
       </div>
     </div>
   </section>
 {% endblock %}
-{% block extra_js %}<script src="{% static 'js/main.js' %}"></script>{% endblock %}
+{% block extra_js %}
+<script src="{% url 'javascript-catalog' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

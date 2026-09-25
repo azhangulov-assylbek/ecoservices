@@ -1,0 +1,322 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "CO₂ на источниках"
+msgstr "CO₂ at sources"
+
+msgid "ESG-отчёт по P5"
+msgstr "ESG report under P5"
+
+msgid "ecoservices.kz разрабатывает ТОО «ЭКОМЕКЕН», ИТ-компания из Казахстана. Мы соединяем ИТ-экспертизу с практикой в области НДТ, экологического регулирования и устойчивого управления проектами."
+msgstr "ecoservices.kz is developed by ECOMEKEN LLP, an IT company from Kazakhstan. We combine IT expertise with practical experience in BAT, environmental regulation and sustainable project management."
+
+msgid "ecoservices.kz — цифровые сервисы для устойчивого развития предприятий"
+msgstr "ecoservices.kz — digital services for corporate sustainable development"
+
+msgid "Бета, можно пробовать"
+msgstr "Beta, ready to try"
+
+msgid "Вклад в Цели устойчивого развития"
+msgstr "Contribution to the Sustainable Development Goals"
+
+msgid "Внедрить новую технологию"
+msgstr "Implement a new technology"
+
+msgid "Вода"
+msgstr "Water"
+
+msgid "Войти"
+msgstr "Log in"
+
+msgid "Все выводы опираются на официальные тексты справочников НДТ, Экологический кодекс РК и международные стандарты отчётности. Результаты носят справочный характер и не заменяют государственную экологическую экспертизу."
+msgstr "All conclusions are based on the official texts of BAT reference documents, the Environmental Code of Kazakhstan and international reporting standards. Results are indicative and do not replace the state environmental expert review."
+
+msgid "Все сервисы"
+msgstr "All services"
+
+msgid "Выберите задачу, и мы подсветим подходящие сервисы. Два уже работают в бета-версии."
+msgstr "Choose a task and we'll highlight the services that fit. Two are already available in beta."
+
+msgid "Выбрать сервис"
+msgstr "Choose a service"
+
+msgid "Данные и выводы собираются в отчёты для КЭР, ПЭК и ESG-отчётности."
+msgstr "Data and findings are compiled into reports for IEP, IEC and ESG reporting."
+
+msgid "Датчики на трубах, водоёмах и границе СЗЗ передают показания непрерывно."
+msgstr "Sensors on stacks, water bodies and the sanitary protection zone boundary transmit readings continuously."
+
+msgid "Демонстрация на условных данных. Нормативные значения показаны для примера."
+msgstr "Demonstration using sample data. Regulatory values are shown for illustration."
+
+msgid "Демонстрация панели мониторинга объекта"
+msgstr "Demonstration of the site monitoring panel"
+
+msgid "Есть идея сервиса?"
+msgstr "Have an idea for a service?"
+
+msgid "Журнал событий"
+msgstr "Event log"
+
+msgid "Запрос отправлен. Инженер ЭКОМЕКЕН свяжется с вами в течение рабочего дня."
+msgstr "Request sent. An ECOMEKEN engineer will contact you within one business day."
+
+msgid "Запрос предложения"
+msgstr "Quote request"
+
+msgid "Запросить предложение"
+msgstr "Request a quote"
+
+msgid "Здоровье и города"
+msgstr "Health and cities"
+
+msgid "ИИ-анализ ecoservices"
+msgstr "ecoservices AI analysis"
+
+msgid "Измеряем"
+msgstr "We measure"
+
+msgid "Инвентаризация"
+msgstr "Inventory"
+
+msgid "Каждый сервис и прибор помогает предприятию двигаться к конкретным целям Повестки-2030 и показывать это в отчётности."
+msgstr "Every service and device helps a company move toward specific 2030 Agenda goals and show this in its reporting."
+
+msgid "Как это работает"
+msgstr "How it works"
+
+msgid "Климат"
+msgstr "Climate"
+
+msgid "Компания"
+msgstr "Company"
+
+msgid "Контроль"
+msgstr "Control"
+
+msgid "Котельная № 2, промплощадка"
+msgstr "Boiler house No. 2, industrial site"
+
+msgid "Мониторинг"
+msgstr "Monitoring"
+
+msgid "Мониторинг пыли"
+msgstr "Dust monitoring"
+
+msgid "Мониторинг шума"
+msgstr "Noise monitoring"
+
+msgid "НДТ"
+msgstr "BAT"
+
+msgid "Напишите нам"
+msgstr "Write to us"
+
+msgid "Например: котельная 2×50 МВт на угле, нужен мониторинг выбросов для КЭР"
+msgstr "For example: 2×50 MW coal-fired boiler house, need emissions monitoring for an IEP"
+
+msgid "О компании ЭКОМЕКЕН"
+msgstr "About ECOMEKEN"
+
+msgid "Оборудование"
+msgstr "Equipment"
+
+msgid "Оборудование для мониторинга"
+msgstr "Monitoring equipment"
+
+msgid "Объект и задача"
+msgstr "Site and task"
+
+msgid "Объясняем"
+msgstr "We explain"
+
+msgid "Организовать мониторинг"
+msgstr "Set up monitoring"
+
+msgid "Основная навигация"
+msgstr "Main navigation"
+
+msgid "Открыть"
+msgstr "Open"
+
+msgid "Открыть сервис"
+msgstr "Open service"
+
+msgid "Отмена"
+msgstr "Cancel"
+
+msgid "Отправить запрос"
+msgstr "Send request"
+
+msgid "Отслеживаем показатели. При превышении здесь появится разбор со ссылкой на справочник НДТ."
+msgstr "We're tracking the indicators. If an exceedance occurs, an explanation with a reference to the BAT document will appear here."
+
+msgid "Отходы"
+msgstr "Waste"
+
+msgid "Отчитываемся"
+msgstr "We report"
+
+msgid "Отчётность"
+msgstr "Reporting"
+
+msgid "Подготовить ESG-отчёт"
+msgstr "Prepare an ESG report"
+
+msgid "Подготовка к КЭР"
+msgstr "Preparing for an IEP"
+
+msgid "Подобрать оборудование"
+msgstr "Select equipment"
+
+msgid "Показания сравниваются с оцифрованными технологическими показателями справочников НДТ."
+msgstr "Readings are compared with the digitised technological indicators from BAT reference documents."
+
+msgid "Получить или пересмотреть КЭР"
+msgstr "Get or revise an IEP"
+
+msgid "Поставляем и подключаем системы непрерывного мониторинга. Показания сразу попадают в ваш кабинет ecoservices.kz."
+msgstr "We supply and connect continuous monitoring systems. Readings go straight to your ecoservices.kz dashboard."
+
+msgid "Посчитать выбросы и платежи"
+msgstr "Calculate emissions and fees"
+
+msgid "При превышении ИИ разбирает причину и предлагает техники со ссылкой на справочник."
+msgstr "If an exceedance occurs, the AI analyses the cause and suggests techniques with a reference to the document."
+
+msgid "Проверка по НДТ"
+msgstr "BAT check"
+
+msgid "Проект ЭКОМЕКЕН"
+msgstr "The ECOMEKEN project"
+
+msgid "Прозрачные данные"
+msgstr "Transparent data"
+
+msgid "Производство"
+msgstr "Industry"
+
+msgid "Разобраться с отходами"
+msgstr "Deal with waste"
+
+msgid "Сверяем"
+msgstr "We compare"
+
+msgid "Сдать отчётность вовремя"
+msgstr "Submit reports on time"
+
+msgid "Сервисы"
+msgstr "Services"
+
+msgid "Сообщить о запуске"
+msgstr "Notify me at launch"
+
+msgid "Соответствие НДТ, ESG-отчётность и непрерывный мониторинг выбросов, воды, пыли и шума. Для экологов предприятий и консультантов в Казахстане."
+msgstr "BAT compliance, ESG reporting and continuous monitoring of emissions, water, dust and noise. For corporate environmental specialists and consultants in Kazakhstan."
+
+msgid "Соответствие НДТ, ESG-отчётность по стандарту P5 и оборудование для мониторинга выбросов, воды, пыли и шума. Проект ЭКОМЕКЕН, Казахстан."
+msgstr "BAT compliance, ESG reporting under the P5 standard, and equipment for monitoring emissions, water, dust and noise. An ECOMEKEN project, Kazakhstan."
+
+msgid "Телефон или email"
+msgstr "Phone or email"
+
+msgid "Устойчивое развитие"
+msgstr "Sustainable development"
+
+msgid "ЦУР 3 и 11"
+msgstr "SDG 3 and 11"
+
+msgid "ЦУР 6 и 14"
+msgstr "SDG 6 and 14"
+
+msgid "ЦУР 7 и 13"
+msgstr "SDG 7 and 13"
+
+msgid "ЦУР 8 и 17"
+msgstr "SDG 8 and 17"
+
+msgid "ЦУР 9 и 12"
+msgstr "SDG 9 and 12"
+
+msgid "ЦУР — 17 Целей устойчивого развития ООН, принятых в Повестке дня на период до 2030 года. Номера целей указаны для ориентира в отчётности."
+msgstr "SDG — the UN's 17 Sustainable Development Goals adopted in the 2030 Agenda. Goal numbers are shown for reference in reporting."
+
+msgid "Цифровые сервисы"
+msgstr "Digital services"
+
+msgid "Цифровые сервисы для устойчивого развития предприятий"
+msgstr "Digital services for corporate sustainable development"
+
+msgid "выпусков сточных вод"
+msgstr "wastewater outfalls"
+
+msgid "для инвесторов, банков и партнёров"
+msgstr "for investors, banks and partners"
+
+msgid "для энергетических установок"
+msgstr "for energy installations"
+
+msgid "качества воды в водоёмах"
+msgstr "of water quality in water bodies"
+
+msgid "классификация и паспорта"
+msgstr "classification and passports"
+
+msgid "на границе СЗЗ"
+msgstr "at the sanitary protection zone boundary"
+
+msgid "онлайн"
+msgstr "online"
+
+msgid "парниковых газов"
+msgstr "of greenhouse gases"
+
+msgid "подбор и оценка технологий"
+msgstr "technology selection and assessment"
+
+msgid "проект ЭКОМЕКЕН"
+msgstr "the ECOMEKEN project"
+
+msgid "у жилой застройки"
+msgstr "near residential areas"
+
+msgid "Климат (ЦУР 7, 13)"
+msgstr "Climate (SDG 7, 13)"
+
+msgid "Вода (ЦУР 6, 14)"
+msgstr "Water (SDG 6, 14)"
+
+msgid "Производство (ЦУР 9, 12)"
+msgstr "Industry (SDG 9, 12)"
+
+msgid "Здоровье и города (ЦУР 3, 11)"
+msgstr "Health and cities (SDG 3, 11)"
+
+msgid "Отчётность (ЦУР 8, 17)"
+msgstr "Reporting (SDG 8, 17)"
+
+msgid "Бета"
+msgstr "Beta"
+
+msgid "В разработке"
+msgstr "In development"
+
+msgid "Планируется"
+msgstr "Planned"
+
+msgid "Укажите компанию и контакт"
+msgstr "Please provide company and contact"
+
+msgid "© %(year)s %(company)s. ecoservices.kz, Астана"
+msgstr "© %(year)s %(company)s. ecoservices.kz, Astana"
+
+msgid "Не удалось отправить запрос. Проверьте поля или напишите на %(email)s."
+msgstr "Couldn't send the request. Check the fields or write to %(email)s."
+
+msgid "Мы дорабатываем этот сервис. Есть вопросы или замечания — напишите на %(email)s."
+msgstr "We're still improving this service. Questions or feedback — write to %(email)s."
+

@@ -1,10 +1,10 @@
-{% load static %}<!DOCTYPE html>
-<html lang="ru">
+{% load i18n static %}<!DOCTYPE html>
+<html lang="{{ request.LANGUAGE_CODE|default:'ru' }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{% block title %}ecoservices.kz — цифровые сервисы для устойчивого развития предприятий{% endblock %}</title>
-<meta name="description" content="{% block description %}Соответствие НДТ, ESG-отчётность по стандарту P5 и оборудование для мониторинга выбросов, воды, пыли и шума. Проект ЭКОМЕКЕН, Казахстан.{% endblock %}">
+<title>{% block title %}{% translate "ecoservices.kz — цифровые сервисы для устойчивого развития предприятий" %}{% endblock %}</title>
+<meta name="description" content="{% block description %}{% translate "Соответствие НДТ, ESG-отчётность по стандарту P5 и оборудование для мониторинга выбросов, воды, пыли и шума. Проект ЭКОМЕКЕН, Казахстан." %}{% endblock %}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,18 +16,27 @@
 <header>
   <div class="wrap bar">
     <div class="brand"><a class="logo" href="{% url 'core:home' %}">ecoservices<span>.kz</span></a>
-      <a class="by" href="{{ site.company_url }}">проект ЭКОМЕКЕН</a></div>
-    <nav aria-label="Основная навигация">
-      <a href="{% url 'core:home' %}#services">Сервисы</a>
-      <a href="{% url 'core:home' %}#sdg">Устойчивое развитие</a>
-      <a href="{% url 'core:home' %}#equipment">Оборудование</a>
-      <a href="{% url 'core:home' %}#flow">Как это работает</a>
-      <a class="btn" href="{% url 'admin:login' %}">Войти</a>
+      <a class="by" href="{{ site.company_url }}">{% translate "проект ЭКОМЕКЕН" %}</a></div>
+    <nav aria-label="{% translate 'Основная навигация' %}">
+      <a href="{% url 'core:home' %}#services">{% translate "Сервисы" %}</a>
+      <a href="{% url 'core:home' %}#sdg">{% translate "Устойчивое развитие" %}</a>
+      <a href="{% url 'core:home' %}#equipment">{% translate "Оборудование" %}</a>
+      <a href="{% url 'core:home' %}#flow">{% translate "Как это работает" %}</a>
+      <form action="{% url 'set_language' %}" method="post" class="lang-switch">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% get_available_languages as AVAILABLE_LANGUAGES %}
+        {% for code, name in AVAILABLE_LANGUAGES %}
+        <button type="submit" name="language" value="{{ code }}" class="{% if code == CURRENT_LANGUAGE %}active{% endif %}" aria-pressed="{% if code == CURRENT_LANGUAGE %}true{% else %}false{% endif %}" aria-label="{{ name }}">{{ code|upper }}</button>
+        {% endfor %}
+      </form>
+      <a class="btn" href="{% url 'admin:login' %}">{% translate "Войти" %}</a>
     </nav>
   </div>
 </header>
 <main>{% block content %}{% endblock %}</main>
-<footer><div class="wrap"><span>© {% now "Y" %} {{ site.company }}. ecoservices.kz, Астана</span><span>Есть идея сервиса? <a href="mailto:{{ site.email }}">Напишите нам</a></span></div></footer>
+<footer><div class="wrap">{% now "Y" as year %}<span>{% blocktranslate with company=site.company %}© {{ year }} {{ company }}. ecoservices.kz, Астана{% endblocktranslate %}</span><span>{% translate "Есть идея сервиса?" %} <a href="mailto:{{ site.email }}">{% translate "Напишите нам" %}</a></span></div></footer>
 {% block extra_js %}{% endblock %}
 </body>
 </html>

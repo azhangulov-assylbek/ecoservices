@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%(label)s: вернулся в норму"
+msgstr "%(label)s: back to normal"
+
+msgid "%(label)s: превышение на %(pct)s%%"
+msgstr "%(label)s: exceeded by %(pct)s%%"
+
+msgid "PM10, граница СЗЗ"
+msgstr "PM10, sanitary zone boundary"
+
+msgid "SO₂, дымовая труба № 1"
+msgstr "SO₂, flue stack No. 1"
+
+msgid "pH, водоём-охладитель"
+msgstr "pH, cooling reservoir"
+
+msgid "Вероятная причина: рост содержания серы в поставке угля. Рекомендуемые техники: полусухая или мокрая известняковая сероочистка, контроль качества топлива."
+msgstr "Likely cause: increased sulphur content in the coal supply. Recommended techniques: semi-dry or wet limestone desulphurisation, fuel quality control."
+
+msgid "Запрос предложения: %s"
+msgstr "Quote request: %s"
+
+msgid "Концентрация SO₂ %(val)s мг/нм³, на %(pct)s%% выше ориентира НДТ для угольного котла этой мощности."
+msgstr "SO₂ concentration is %(val)s mg/Nm³, %(pct)s%% above the BAT reference for a coal-fired boiler of this capacity."
+
+msgid "Подключено 4 поста мониторинга"
+msgstr "4 monitoring posts connected"
+
+msgid "Сообщим о запуске"
+msgstr "We'll notify you"
+
+msgid "Сообщить о запуске"
+msgstr "Notify me at launch"
+
+msgid "Справочник НДТ «Сжигание топлива на крупных установках в целях производства энергии», ПП РК от 23.01.2024 № 23"
+msgstr "BAT reference document «Combustion of fuel in large installations for energy production», Government of Kazakhstan Resolution No. 23 dated 23.01.2024"
+
+msgid "Шум, жилая зона"
+msgstr "Noise, residential area"
+
+msgid "в норме"
+msgstr "normal"
+
+msgid "выше ориентира %s"
+msgstr "above the reference %s"
+

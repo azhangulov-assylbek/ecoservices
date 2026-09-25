@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% block title %}{{ service.name }} — ecoservices.kz{% endblock %}
-{% block description %}{{ service.description }}{% endblock %}
+{% load i18n %}
+{% block title %}{{ service.display_name }} — ecoservices.kz{% endblock %}
+{% block description %}{{ service.display_description }}{% endblock %}
 {% block content %}
   <section class="block">
     <div class="wrap">
-      <span class="tag {{ service.status }}">{% if service.status == 'beta' %}Бета, можно пробовать{% else %}{{ service.get_status_display }}{% endif %}</span>
-      <h1>{{ service.name }}</h1>
-      <p class="lead">{{ service.description }}</p>
-      <p class="demo-note">Мы дорабатываем этот сервис. Есть вопросы или замечания — напишите на {{ site.email }}.</p>
+      <span class="tag {{ service.status }}">{% if service.status == 'beta' %}{% translate "Бета, можно пробовать" %}{% else %}{{ service.get_status_display }}{% endif %}</span>
+      <h1>{{ service.display_name }}</h1>
+      <p class="lead">{{ service.display_description }}</p>
+      <p class="demo-note">{% blocktranslate with email=site.email %}Мы дорабатываем этот сервис. Есть вопросы или замечания — напишите на {{ email }}.{% endblocktranslate %}</p>
     </div>
   </section>
 {% endblock %}

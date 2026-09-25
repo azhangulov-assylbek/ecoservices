@@ -8,6 +8,7 @@ Composition root (`config/`) — единственное место в прое
 """
 from django.apps import apps as django_apps
 from django.conf import settings
+from django.urls import NoReverseMatch, reverse
 
 
 def enabled_service_configs():
@@ -28,5 +29,15 @@ def enabled_service_configs():
 
 
 def service_url_map():
-    """Словарь {catalog.Service.slug: адрес стартовой страницы} для включённых сервисов."""
-    return {config.service_slug: f"/services/{config.service_slug}/" for config in enabled_service_configs()}
+    """Словарь {catalog.Service.slug: адрес стартовой страницы} для включённых сервисов.
+
+    Строится через reverse(), поэтому адрес автоматически получает языковой префикс
+    (/kk/services/..., /en/services/...) для текущего активного языка запроса.
+    """
+    urls = {}
+    for config in enabled_service_configs():
+        try:
+            urls[config.service_slug] = reverse(f"{config.name}:index")
+        except NoReverseMatch:
+            continue
+    return urls

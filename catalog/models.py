@@ -1,17 +1,39 @@
 from django.db import models
+from django.utils.translation import get_language
+from django.utils.translation import gettext_lazy as _
+
+# Языки, для которых у переводимых полей каталога есть отдельные колонки (name_kk, name_en, ...).
+# Русский — основной язык, для него отдельной колонки нет: это сами поля name/description/parameters.
+TRANSLATABLE_LANGUAGES = ["kk", "en"]
+
+
+def localized_field(instance, field):
+    """Значение поля на текущем активном языке с откатом на русский, если перевод не заполнен.
+
+    Используется вместо django-modeltranslation: переводы — обычные CharField/TextField
+    (`<field>_kk`, `<field>_en`), которые видно и редактируется прямо в админке.
+    """
+    lang = get_language()
+    if lang in TRANSLATABLE_LANGUAGES:
+        value = getattr(instance, f"{field}_{lang}", "")
+        if value:
+            return value
+    return getattr(instance, field)
 
 
 class Theme(models.TextChoices):
     """Тематические цвета, связанные с ЦУР (см. блок «Вклад в ЦУР» на главной)."""
-    CLIMATE = "climate", "Климат (ЦУР 7, 13)"
-    WATER = "water", "Вода (ЦУР 6, 14)"
-    INDUSTRY = "industry", "Производство (ЦУР 9, 12)"
-    HEALTH = "health", "Здоровье и города (ЦУР 3, 11)"
-    PARTNER = "partner", "Отчётность (ЦУР 8, 17)"
+    CLIMATE = "climate", _("Климат (ЦУР 7, 13)")
+    WATER = "water", _("Вода (ЦУР 6, 14)")
+    INDUSTRY = "industry", _("Производство (ЦУР 9, 12)")
+    HEALTH = "health", _("Здоровье и города (ЦУР 3, 11)")
+    PARTNER = "partner", _("Отчётность (ЦУР 8, 17)")
 
 
 class ServiceGroup(models.Model):
     name = models.CharField("Название группы", max_length=120)
+    name_kk = models.CharField("Название группы (kk)", max_length=120, blank=True)
+    name_en = models.CharField("Название группы (en)", max_length=120, blank=True)
     order = models.PositiveIntegerField("Порядок", default=0)
 
     class Meta:
@@ -22,28 +44,36 @@ class ServiceGroup(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def display_name(self):
+        return localized_field(self, "name")
+
 
 class Service(models.Model):
     class Status(models.TextChoices):
-        BETA = "beta", "Бета"
-        DEV = "dev", "В разработке"
-        PLAN = "plan", "Планируется"
+        BETA = "beta", _("Бета")
+        DEV = "dev", _("В разработке")
+        PLAN = "plan", _("Планируется")
 
     # Задачи пользователя для фильтра на главной (ключи совпадают с data-task кнопок)
     TASKS = {
-        "ker": "Получить или пересмотреть КЭР",
-        "esg": "Подготовить ESG-отчёт",
-        "monitor": "Организовать мониторинг",
-        "tech": "Внедрить новую технологию",
-        "waste": "Разобраться с отходами",
-        "emis": "Посчитать выбросы и платежи",
-        "report": "Сдать отчётность вовремя",
+        "ker": _("Получить или пересмотреть КЭР"),
+        "esg": _("Подготовить ESG-отчёт"),
+        "monitor": _("Организовать мониторинг"),
+        "tech": _("Внедрить новую технологию"),
+        "waste": _("Разобраться с отходами"),
+        "emis": _("Посчитать выбросы и платежи"),
+        "report": _("Сдать отчётность вовремя"),
     }
 
     group = models.ForeignKey(ServiceGroup, on_delete=models.PROTECT, related_name="services", verbose_name="Группа")
     name = models.CharField("Название", max_length=160)
+    name_kk = models.CharField("Название (kk)", max_length=160, blank=True)
+    name_en = models.CharField("Название (en)", max_length=160, blank=True)
     slug = models.SlugField(unique=True)
     description = models.TextField("Краткое описание")
+    description_kk = models.TextField("Краткое описание (kk)", blank=True)
+    description_en = models.TextField("Краткое описание (en)", blank=True)
     status = models.CharField("Статус", max_length=8, choices=Status.choices, default=Status.PLAN)
     theme = models.CharField("Тема ЦУР", max_length=12, choices=Theme.choices)
     tasks = models.CharField("Задачи (ключи через запятую)", max_length=200, blank=True,
@@ -63,6 +93,14 @@ class Service(models.Model):
     def task_list(self):
         return [t.strip() for t in self.tasks.split(",") if t.strip()]
 
+    @property
+    def display_name(self):
+        return localized_field(self, "name")
+
+    @property
+    def display_description(self):
+        return localized_field(self, "description")
+
 
 class NotifyRequest(models.Model):
     """Подписка «Сообщить о запуске» — показывает спрос на будущие сервисы."""
@@ -78,8 +116,14 @@ class NotifyRequest(models.Model):
 
 class Equipment(models.Model):
     name = models.CharField("Название", max_length=120)
+    name_kk = models.CharField("Название (kk)", max_length=120, blank=True)
+    name_en = models.CharField("Название (en)", max_length=120, blank=True)
     description = models.TextField("Описание")
+    description_kk = models.TextField("Описание (kk)", blank=True)
+    description_en = models.TextField("Описание (en)", blank=True)
     parameters = models.CharField("Измеряемые параметры", max_length=300)
+    parameters_kk = models.CharField("Измеряемые параметры (kk)", max_length=300, blank=True)
+    parameters_en = models.CharField("Измеряемые параметры (en)", max_length=300, blank=True)
     theme = models.CharField("Тема ЦУР", max_length=12, choices=Theme.choices)
     order = models.PositiveIntegerField("Порядок", default=0)
 
@@ -90,6 +134,18 @@ class Equipment(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def display_name(self):
+        return localized_field(self, "name")
+
+    @property
+    def display_description(self):
+        return localized_field(self, "description")
+
+    @property
+    def display_parameters(self):
+        return localized_field(self, "parameters")
 
 
 class QuoteRequest(models.Model):
