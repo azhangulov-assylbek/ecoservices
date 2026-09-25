@@ -27,7 +27,15 @@ INSTALLED_APPS = [
     "core",
     "catalog",
     "ndt",
+    # Сервисы-приложения (модульный монолит) — см. docs/architecture.md
+    "ndt_check",
+    "esg_p5",
 ]
+
+# Какие сервисы-приложения подключены и смонтированы в /services/<slug>/.
+# Каждое приложение из списка должно быть в INSTALLED_APPS и иметь AppConfig.service_slug
+# (проверяется системной проверкой config.checks.check_enabled_services).
+ENABLED_SERVICES = [s.strip() for s in os.environ.get("ENABLED_SERVICES", "ndt_check,esg_p5").split(",") if s.strip()]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

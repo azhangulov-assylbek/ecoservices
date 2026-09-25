@@ -46,7 +46,7 @@
           <span class="tag {{ s.status }}">{% if s.status == 'beta' %}Бета, можно пробовать{% else %}{{ s.get_status_display }}{% endif %}</span>
           <h3>{{ s.name }}</h3>
           <p>{{ s.description }}</p>
-          <div class="actions"><a class="btn solid" href="#">Открыть сервис</a></div>
+          <div class="actions">{% if s.service_url %}<a class="btn solid" href="{{ s.service_url }}">Открыть сервис</a>{% else %}<button class="btn" data-notify aria-pressed="false">Сообщить о запуске</button>{% endif %}</div>
         </article>
         {% endfor %}
       </div>
@@ -57,7 +57,7 @@
         <div class="row" data-tasks="{{ s.tasks }}" style="--rc:var(--c-{{ s.theme }})">
           <span class="mark"></span><span class="name">{{ s.name }}</span><span class="desc">{{ s.description }}</span>
           <span class="tag {{ s.status }}">{{ s.get_status_display }}</span>
-          <span class="go">{% if s.status == 'beta' %}<a class="link" href="#">Открыть</a>{% else %}<button class="link" data-notify aria-pressed="false">Сообщить о запуске</button>{% endif %}</span>
+          <span class="go">{% if s.service_url %}<a class="link" href="{{ s.service_url }}">Открыть</a>{% else %}<button class="link" data-notify aria-pressed="false">Сообщить о запуске</button>{% endif %}</span>
         </div>
         {% endfor %}
       </div>

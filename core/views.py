@@ -3,12 +3,24 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
 from catalog.models import Equipment, QuoteRequest, Service, ServiceGroup
+from config.service_registry import service_url_map
 
 
 def home(request):
+    urls = service_url_map()
+    featured = list(Service.objects.filter(featured=True).order_by("order"))
+    groups = list(ServiceGroup.objects.prefetch_related("services"))
+    # Адрес реального сервиса, если он подключён и включён (settings.ENABLED_SERVICES).
+    # Статус сервиса в базе (Service.status) не решает, вести ли на страницу сервиса —
+    # он только определяет подпись бейджа.
+    for s in featured:
+        s.service_url = urls.get(s.slug)
+    for group in groups:
+        for s in group.services.all():
+            s.service_url = urls.get(s.slug)
     context = {
-        "featured": Service.objects.filter(featured=True).order_by("order"),
-        "groups": ServiceGroup.objects.prefetch_related("services"),
+        "featured": featured,
+        "groups": groups,
         "equipment": Equipment.objects.all(),
     }
     return render(request, "core/home.html", context)
