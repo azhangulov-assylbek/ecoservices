@@ -51,9 +51,13 @@ curl -fsSL https://get.docker.com | sh
 ```
 
 ## 5. Код и настройки
+Сервер работает **только с веткой `main`** — в ней только проверенные, готовые к выкладке
+изменения (см. раздел «Ветки: develop и main» в CLAUDE.md). Вся текущая разработка идёт в
+`develop` и на сервер не попадает, пока её не смержили в `main`.
 ```bash
 git clone https://github.com/azhangulov-assylbek/ecoservices.git /opt/ecoservices
 cd /opt/ecoservices
+git checkout main   # clone уже оформляет на main (ветка по умолчанию), но проверить не лишнее
 cp .env.example .env
 python3 -c "import secrets; print(secrets.token_urlsafe(50))"   # скопируйте ключ
 nano .env
@@ -79,8 +83,9 @@ docker compose -f docker-compose.prod.yml logs --tail=100 caddy
 ```
 
 ## 7. Обновление сайта после git push
+Только после того, как изменения смержены в `main` (не раньше — `develop` на сервер не тянуть):
 ```bash
-cd /opt/ecoservices && git pull
+cd /opt/ecoservices && git checkout main && git pull
 docker compose -f docker-compose.prod.yml up -d --build
 ```
 Позже это можно автоматизировать через GitHub Actions.
