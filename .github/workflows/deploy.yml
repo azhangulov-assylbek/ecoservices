@@ -31,6 +31,9 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             set -e
+            # Каталог создавался под другим пользователем (например, root при первичной
+            # настройке сервера) — без этого git отказывается работать с "чужим" репозиторием.
+            git config --global --add safe.directory /opt/ecoservices
             cd /opt/ecoservices
             git checkout main
             git pull --ff-only origin main

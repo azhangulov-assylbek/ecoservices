@@ -111,6 +111,14 @@ cd /opt/ecoservices && git checkout main && git pull --ff-only origin main
 docker compose -f docker-compose.prod.yml up -d --build
 ```
 
+Если git ругается `detected dubious ownership in repository` — каталог создавался под другим
+пользователем (например, `root` при первичной настройке). Один раз для текущего пользователя:
+```bash
+git config --global --add safe.directory /opt/ecoservices
+```
+(в workflow эта команда уже встроена в каждый запуск деплоя, поэтому для автодеплоя её достаточно
+один раз — но при ручном заходе другим пользователем может понадобиться повторить).
+
 ## 8. Резервные копии
 - Lightsail → сервер → **Snapshots** → включить автоматические ежедневные снимки
   (небольшая дополнительная плата).
