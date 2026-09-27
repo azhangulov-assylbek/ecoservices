@@ -1,4 +1,4 @@
-/* ecoservices.kz — основной стиль (утверждённый вариант 3) */
+/* NormiQ (сайт ecoservices.kz) — основной стиль (утверждённый вариант 3) */
 :root{
   --bg:#FFFFFF; --soft:#F1F4F7; --ink:#12263A; --muted:#566A7C; --line:#D6DEE6;
   --brand:#0E7C66; --alarm:#D2463F;
@@ -34,9 +34,17 @@ a{color:inherit}
 
 header{border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0}
-.brand{display:flex;flex-direction:column;gap:1px}
-.logo{font-family:"Oswald",sans-serif;font-weight:700;font-size:24px;text-decoration:none;letter-spacing:.01em}
-.logo span{color:var(--brand)}
+.brand{display:flex;flex-direction:column;gap:3px}
+.logo{display:inline-block;line-height:0}
+.logo-img{display:block;height:26px;width:auto}
+.logo-dark{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .logo-light{display:none}
+  :root:not([data-theme="light"]) .logo-dark{display:block}
+}
+:root[data-theme="dark"] .logo-light{display:none}
+:root[data-theme="dark"] .logo-dark{display:block}
+.tagline{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .by{font-size:13px;color:var(--muted);text-decoration:none}
 .by:hover{color:var(--brand);text-decoration:underline}
 nav{display:flex;gap:26px;align-items:center;font-size:15px}

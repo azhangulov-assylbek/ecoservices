@@ -5,8 +5,8 @@ from django.views.i18n import JavaScriptCatalog
 
 from config.service_registry import enabled_service_configs
 
-admin.site.site_header = "ecoservices.kz — администрирование"
-admin.site.site_title = "ecoservices.kz"
+admin.site.site_header = "NormiQ — администрирование"
+admin.site.site_title = "NormiQ"
 
 
 def _service_urlpatterns():

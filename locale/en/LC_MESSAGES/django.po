@@ -11,11 +11,11 @@ msgstr "CO₂ at sources"
 msgid "ESG-отчёт по P5"
 msgstr "ESG report under P5"
 
-msgid "ecoservices.kz разрабатывает ТОО «ЭКОМЕКЕН», ИТ-компания из Казахстана. Мы соединяем ИТ-экспертизу с практикой в области НДТ, экологического регулирования и устойчивого управления проектами."
-msgstr "ecoservices.kz is developed by ECOMEKEN LLP, an IT company from Kazakhstan. We combine IT expertise with practical experience in BAT, environmental regulation and sustainable project management."
+msgid "NormiQ разрабатывает ТОО «ЭКОМЕКЕН», ИТ-компания из Казахстана. Мы соединяем ИТ-экспертизу с практикой в области НДТ, экологического регулирования и устойчивого управления проектами."
+msgstr "NormiQ is developed by ECOMEKEN LLP, an IT company from Kazakhstan. We combine IT expertise with practical experience in BAT, environmental regulation and sustainable project management."
 
-msgid "ecoservices.kz — цифровые сервисы для устойчивого развития предприятий"
-msgstr "ecoservices.kz — digital services for corporate sustainable development"
+msgid "NormiQ — цифровые сервисы для устойчивого развития предприятий"
+msgstr "NormiQ — digital services for corporate sustainable development"
 
 msgid "Бета, можно пробовать"
 msgstr "Beta, ready to try"
@@ -74,8 +74,8 @@ msgstr "Request a quote"
 msgid "Здоровье и города"
 msgstr "Health and cities"
 
-msgid "ИИ-анализ ecoservices"
-msgstr "ecoservices AI analysis"
+msgid "ИИ-анализ NormiQ"
+msgstr "NormiQ AI analysis"
 
 msgid "Измеряем"
 msgstr "We measure"
@@ -179,8 +179,8 @@ msgstr "Readings are compared with the digitised technological indicators from B
 msgid "Получить или пересмотреть КЭР"
 msgstr "Get or revise an IEP"
 
-msgid "Поставляем и подключаем системы непрерывного мониторинга. Показания сразу попадают в ваш кабинет ecoservices.kz."
-msgstr "We supply and connect continuous monitoring systems. Readings go straight to your ecoservices.kz dashboard."
+msgid "Поставляем и подключаем системы непрерывного мониторинга. Показания сразу попадают в ваш кабинет NormiQ."
+msgstr "We supply and connect continuous monitoring systems. Readings go straight to your NormiQ dashboard."
 
 msgid "Посчитать выбросы и платежи"
 msgstr "Calculate emissions and fees"
@@ -311,8 +311,8 @@ msgstr "Planned"
 msgid "Укажите компанию и контакт"
 msgstr "Please provide company and contact"
 
-msgid "© %(year)s %(company)s. ecoservices.kz, Астана"
-msgstr "© %(year)s %(company)s. ecoservices.kz, Astana"
+msgid "© %(year)s %(company)s. NormiQ, Астана"
+msgstr "© %(year)s %(company)s. NormiQ, Astana"
 
 msgid "Не удалось отправить запрос. Проверьте поля или напишите на %(email)s."
 msgstr "Couldn't send the request. Check the fields or write to %(email)s."

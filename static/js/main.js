@@ -1,4 +1,4 @@
-/* ecoservices.kz — демо-панель мониторинга, фильтр каталога, заявки
+/* NormiQ (сайт ecoservices.kz) — демо-панель мониторинга, фильтр каталога, заявки
    Переводимые строки берутся из JS-каталога Django (jsi18n), подключённого перед этим файлом:
    gettext()/interpolate() определены глобально скриптом django.views.i18n.JavaScriptCatalog. */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;

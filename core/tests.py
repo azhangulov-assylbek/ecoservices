@@ -12,7 +12,7 @@ class HomeTests(TestCase):
     def test_home_renders_catalog_from_db(self):
         r = self.client.get(reverse("core:home"))
         self.assertEqual(r.status_code, 200)
-        self.assertContains(r, "ecoservices")
+        self.assertContains(r, "NormiQ")
         # данные из начальной миграции
         self.assertGreaterEqual(Service.objects.count(), 10)
         self.assertContains(r, "ESG-отчёт по стандарту P5")
