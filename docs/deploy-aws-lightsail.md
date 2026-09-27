@@ -82,13 +82,34 @@ docker compose -f docker-compose.prod.yml logs --tail=100 web
 docker compose -f docker-compose.prod.yml logs --tail=100 caddy
 ```
 
-## 7. Обновление сайта после git push
-Только после того, как изменения смержены в `main` (не раньше — `develop` на сервер не тянуть):
+## 7. Автоматический деплой (GitHub Actions)
+Пуш в `main` (в том числе слияние `develop` → `main`) сам обновляет сервер — workflow
+`.github/workflows/deploy.yml` сначала прогоняет тесты (`python manage.py test`) и только если
+они прошли, по SSH заходит на сервер и выполняет `git pull` + `docker compose -f
+docker-compose.prod.yml up -d --build`. Вручную на сервер заходить не нужно.
+
+Одноразовая настройка:
+1. На сервере — отдельная пара SSH-ключей для деплоя (не личный ключ администратора):
+   ```bash
+   ssh-keygen -t ed25519 -f ~/.ssh/github_deploy -N ""
+   cat ~/.ssh/github_deploy.pub >> ~/.ssh/authorized_keys
+   cat ~/.ssh/github_deploy   # приватный ключ — скопируйте целиком, включая строки BEGIN/END
+   ```
+2. В репозитории на GitHub: **Settings → Secrets and variables → Actions → New repository
+   secret**, добавить:
+   - `DEPLOY_HOST` — статический IP сервера (см. раздел 2)
+   - `DEPLOY_USER` — `ubuntu` (пользователь, под которым разворачивали сервер)
+   - `DEPLOY_SSH_KEY` — содержимое приватного ключа `~/.ssh/github_deploy` целиком
+3. (Необязательно, для дополнительной защиты) **Settings → Environments → New environment**,
+   назвать `production`, включить **Required reviewers** — тогда каждый деплой будет ждать
+   подтверждения на GitHub перед тем, как реально зайти на сервер. Workflow уже указывает
+   `environment: production`, так что достаточно настроить защиту у этого окружения.
+
+### Если нужно обновить вручную (например, Actions недоступен)
 ```bash
-cd /opt/ecoservices && git checkout main && git pull
+cd /opt/ecoservices && git checkout main && git pull --ff-only origin main
 docker compose -f docker-compose.prod.yml up -d --build
 ```
-Позже это можно автоматизировать через GitHub Actions.
 
 ## 8. Резервные копии
 - Lightsail → сервер → **Snapshots** → включить автоматические ежедневные снимки

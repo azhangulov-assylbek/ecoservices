@@ -1,0 +1,38 @@
+name: Деплой на продакшен
+
+# Пуш в main = выпуск на прод (см. «Ветки: develop и main» в CLAUDE.md).
+# Сначала прогоняются тесты; сервер обновляется только если они прошли.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # ручной запуск из вкладки Actions, без нового коммита
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python manage.py test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: SSH и обновление контейнеров
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            set -e
+            cd /opt/ecoservices
+            git checkout main
+            git pull --ff-only origin main
+            docker compose -f docker-compose.prod.yml up -d --build
+            docker image prune -f
